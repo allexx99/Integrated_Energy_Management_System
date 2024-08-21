@@ -1,8 +1,8 @@
 # Integrated_Energy_Management_System
 Web app for efficient monitoring and management of energy usage across devices.
   
-The user will be able to manage his user account through the "Sign up" and "Log in" functionalities. 
-When the website is accessed by the client, he will be able to see his personal data and the devices 
+The user is able to manage his user account through the "Sign up" and "Log in" functionalities. 
+When the website is accessed by the client, he can see his personal data and the devices 
 assigned to him. He is able to edit his personal data and also his devices. When connected, the client 
 cannot access the admin URLs. 
 
