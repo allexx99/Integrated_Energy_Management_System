@@ -19,7 +19,6 @@ import java.util.concurrent.TimeoutException;
 
 public class Main {
     private final static String QUEUE_NAME = "myQueue";
-    // Connection details (replace with your actual values from the CloudAMQP website at the RabbitMQ details of your created connection)
     private final static String RABBITMQ_URI = "amqps://cyzpinwn:R8Z_JF3EA2kzs5NNI1F7aQRkbjHyRvUp@gull.rmq.cloudamqp.com/cyzpinwn";
 
     public static void main(String[] args) throws Exception {
