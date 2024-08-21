@@ -1,0 +1,146 @@
+version: '3'
+
+services:
+  backend-user-container:
+    image: user_image:latest
+    ports:
+      - "8080:8080"
+    environment:
+      DB_IP: mysql-container
+      DEVICE_DOMAIN: backend-device-container
+    depends_on:
+      - mysql-container
+    networks:
+      - myNetwork
+
+  backend-device-container:
+    image: device_image:latest
+    ports:
+      - "8081:8081"
+    environment:
+      DB_IP: mysql-container
+    depends_on:
+      - mysql-container
+    networks:
+      - myNetwork
+
+  backend-measurement-container:
+      image: measurement_image:latest
+      ports:
+        - "8082:8082"
+      environment:
+        DB_IP: mysql-container
+      depends_on:
+        - mysql-container
+      networks:
+        - myNetwork
+
+  backend-chat-container:
+    image: chat_image:latest
+    ports:
+      - "8083:8083"
+    networks:
+      - myNetwork
+
+  mysql-container:
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: ds2023users
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    networks:
+      - myNetwork
+
+  frontend-container:
+    image: frontend_image:latest
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    depends_on:
+      - backend-device-container
+      - backend-user-container
+    networks:
+      - myNetwork
+
+networks:
+  myNetwork:
+    driver: bridge
+
+#version: '3'
+#
+#services:
+#  db-users:
+#    image: mysql
+#    restart: always
+#    environment:
+#      MYSQL_DATABASE: 'ds2023users'
+#      MYSQL_ROOT_PASSWORD: 'root'
+#    ports:
+#      - "3307:3306"
+#    volumes:
+#      - my-db-users:/var/lib/mysql
+#    networks:
+#      demo_net:
+#        ipv4_address: 172.30.0.4
+#
+#  db-devices:
+#    image: mysql
+#    restart: always
+#    environment:
+#      MYSQL_DATABASE: 'ds2023devices'
+#      MYSQL_ROOT_PASSWORD: 'root'
+#    ports:
+#      - "3308:3306"
+#    volumes:
+#      - my-db-devices:/var/lib/mysql
+#    networks:
+#      demo_net:
+#        ipv4_address: 172.30.0.5
+#
+#  user-service:
+#    build:
+#      context: ./user-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8082:8080"
+#    environment:
+#      - DB_IP=db-users
+#      - DB_PORT=3306
+#      - DB_USER=root
+#      - DB_PASSWORD=root
+#      - DB_DBNAME=ds2023users
+#    depends_on:
+#      - db-users
+#    networks:
+#      demo_net:
+#        ipv4_address: 172.30.0.2
+#
+#  device-service:
+#    build:
+#      context: ./device-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8083:8081"
+#    environment:
+#      - DB_IP=db-devices
+#      - DB_PORT=3306
+#      - DB_USER=root
+#      - DB_PASSWORD=root
+#      - DB_DBNAME=ds2023devices
+#    depends_on:
+#      - db-devices
+#    networks:
+#      demo_net:
+#        ipv4_address: 172.30.0.3
+#
+#volumes:
+#  my-db-users:
+#  my-db-devices:
+#
+#networks:
+#  demo_net:
+#    external: true

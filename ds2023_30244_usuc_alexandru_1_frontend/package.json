@@ -1,0 +1,57 @@
+{
+  "name": "ds2023_30244_usuc_alexandru_1_frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "apexcharts": "^3.44.1",
+    "axios": "^1.5.1",
+    "chart.js": "^4.4.0",
+    "formik": "^2.4.5",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.17.0",
+    "react-scripts": "5.0.1",
+    "react-stomp": "^5.1.0",
+    "react-toastify": "^9.1.3",
+    "socket.io-client": "^4.7.2",
+    "sockjs": "^0.3.24",
+    "sockjs-client": "^1.6.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
+}
